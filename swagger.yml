@@ -1268,7 +1268,7 @@ paths:
           description: Category results response
   '/v1/product/{tenant}/':
     get:
-      summary: Perform Search with given query
+      summary: Search product by productId
       description: |-
         Product details API 
 
@@ -1371,7 +1371,7 @@ paths:
                     description: ''
                   isPublished:
                     type: boolean
-                    example: 'true'
+                    example: true
                     description: ''
                   breadCrumb:
                     type: array
@@ -1615,7 +1615,7 @@ paths:
                     description: ''
                   guideSymbol:
                     type: boolean
-                    example: 'false'
+                    example: false
                     description: ''
                   mediaList:
                     type: number
@@ -1627,7 +1627,7 @@ paths:
                     properties:
                       applicable:
                         type: boolean
-                        example: 'false'
+                        example: false
                         description: ''
                       url:
                         type: number
@@ -1671,6 +1671,33 @@ paths:
                             value:
                               type: number
                               example: '2799123'
+                              description: ''
+                            selected:
+                              type: boolean
+                              example: 'false'
+                              description: ''
+                        description: ''
+                  serviceOptions:
+                    type: object
+                    required: []
+                    properties:
+                      header:
+                        type: string
+                        example: Selecciona servicios adicionales
+                        description: ''
+                      services:
+                        type: array
+                        items:
+                          type: object
+                          required: []
+                          properties:
+                            label:
+                              type: string
+                              example: Armado $24.990
+                              description: ''
+                            value:
+                              type: number
+                              example: '4513428'
                               description: ''
                             selected:
                               type: boolean
