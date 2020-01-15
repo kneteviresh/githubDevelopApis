@@ -22,14 +22,14 @@ paths:
       description: |-
         Product search API 
 
-         Example : /v1/cl?q=shoes
+         Example : /v1/search/
       tags:
         - Search
       parameters:
         - type: string
           description: |-
             Search term 
-              Example: shoes
+              Example: camisa
           required: false
           name: Ntt
           in: query
@@ -612,11 +612,11 @@ paths:
           description: Search results response
   '/v1/listing/{tenant}/':
     get:
-      summary: Perform Search with given query
+      summary: Perform Search with given Category
       description: |-
         Product search API 
 
-         Example : /v1/cl?q=shoes
+         Example : /v1/listing
       tags:
         - Search
       parameters:
@@ -714,7 +714,7 @@ paths:
       responses:
         '200':
           schema:
-            description: Search results response
+            description: Category results response
             type: object
             properties:
               data:
@@ -1265,29 +1265,22 @@ paths:
               reqBody:
                 type: object
                 additionalProperties: true
-          description: Search results response
+          description: Category results response
   '/v1/product/{tenant}/':
     get:
       summary: Perform Search with given query
       description: |-
-        Product search API 
+        Product details API 
 
-         Example : /v1/cl?q=shoes
+         Example : /v1/product
       tags:
-        - Search
+        - Product
       parameters:
-        - type: string
-          description: |-
-            Search term 
-              Example: shoes
-          required: false
-          name: site
-          in: query
-        - type: string
+        - required: false
+          type: string
           description: |-
             Page number 
              Example: 1, 2, 3
-          required: false
           name: productId
           in: query
         - type: string
@@ -1684,7 +1677,6 @@ paths:
                               example: 'false'
                               description: ''
                         description: ''
-                        example: '[object Object],[object Object],[object Object]'
                   currentVariant:
                     type: number
                     example: '4989166'
@@ -1753,6 +1745,161 @@ paths:
                                 properties: {}
                                 description: ''
                             description: ''
+                          variants:
+                            type: array
+                            items:
+                              type: object
+                              required: []
+                              properties:
+                                id:
+                                  type: number
+                                  example: '4989166'
+                                  description: ''
+                                name:
+                                  type: string
+                                  example: LED 40" KDL-40W655D LA8 Full HD Smart TV
+                                  description: ''
+                                productType:
+                                  type: string
+                                  example: REGULAR
+                                  description: ''
+                                sortOrder:
+                                  type: number
+                                  example: '0'
+                                  description: ''
+                                media:
+                                  type: object
+                                  required: []
+                                  properties: {}
+                                  description: ''
+                                cmrPoints:
+                                  type: number
+                                  example: '1733'
+                                  description: ''
+                                badges:
+                                  type: number
+                                  example: ''
+                                  description: ''
+                                availability:
+                                  type: array
+                                  items:
+                                    type: object
+                                    required: []
+                                    properties:
+                                      variantId:
+                                        type: number
+                                        example: '4989166'
+                                        description: ''
+                                      sellerId:
+                                        type: string
+                                        example: FALABELLA
+                                        description: ''
+                                      offeringId:
+                                        type: number
+                                        example: '4989166'
+                                        description: ''
+                                      stockGeoTypeKey:
+                                        type: string
+                                        example: Zone
+                                        description: ''
+                                      stockGeoTypeId:
+                                        type: number
+                                        example: '13'
+                                        description: ''
+                                      shippingOptionType:
+                                        type: string
+                                        example: PickupInStore
+                                        description: ''
+                                      stateOfStock:
+                                        type: string
+                                        example: InStock
+                                        description: ''
+                                      hasStock:
+                                        type: boolean
+                                        example: 'true'
+                                        description: ''
+                                      quantity:
+                                        type: number
+                                        example: '29'
+                                        description: ''
+                                      sourceUpdatedAt:
+                                        type: string
+                                        example: '2019-12-24T18:15:43.294Z'
+                                        description: ''
+                                  description: ''
+                                prices:
+                                  type: array
+                                  items:
+                                    type: object
+                                    required: []
+                                    properties:
+                                      label:
+                                        type: number
+                                        example: ''
+                                        description: ''
+                                      icons:
+                                        type: number
+                                        example: ''
+                                        description: ''
+                                      symbol:
+                                        type: string
+                                        example: '$ '
+                                        description: ''
+                                      type:
+                                        type: string
+                                        example: internetPrice
+                                        description: ''
+                                      price:
+                                        type: array
+                                        items:
+                                          type: string
+                                        example: '259.990'
+                                        description: ''
+                                  description: ''
+                                offerings:
+                                  type: array
+                                  items:
+                                    type: object
+                                    required: []
+                                    properties:
+                                      sellerId:
+                                        type: string
+                                        example: FALABELLA
+                                        description: ''
+                                      startDate:
+                                        type: string
+                                        example: '2010-01-01T03:00:00Z'
+                                        description: ''
+                                      offeringId:
+                                        type: number
+                                        example: '4989166'
+                                        description: ''
+                                      sellerProductStatus:
+                                        type: string
+                                        example: ACTIVO
+                                        description: ''
+                                  description: ''
+                                attributes:
+                                  type: object
+                                  required: []
+                                  properties:
+                                    topSpecifications:
+                                      type: number
+                                      example: ''
+                                      description: ''
+                                    specifications:
+                                      type: number
+                                      example: ''
+                                      description: ''
+                                    sizeChart:
+                                      type: object
+                                      required: []
+                                      properties: {}
+                                      description: ''
+                                skuCollectionIds:
+                                  type: array
+                                  items:
+                                    type: string
                           brandName:
                             type: string
                             example: Logitech
@@ -1763,4 +1910,14 @@ paths:
                             description: ''
                         description: ''
                 description: ''
+          description: Default Response
+  '/v1/config/{tenant}/{level}':
+    get:
+      responses:
+        '200':
+          description: Default Response
+  '/v1/plans/{tenant}/':
+    get:
+      responses:
+        '200':
           description: Default Response
