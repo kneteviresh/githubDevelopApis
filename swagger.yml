@@ -24,7 +24,7 @@ paths:
 
          Example : /v1/cl?q=shoes
       tags:
-        - SLP
+        - Search
       parameters:
         - type: string
           description: |-
@@ -610,3 +610,1157 @@ paths:
                 type: object
                 additionalProperties: true
           description: Search results response
+  '/v1/listing/{tenant}/':
+    get:
+      summary: Perform Search with given query
+      description: |-
+        Product search API 
+
+         Example : /v1/cl?q=shoes
+      tags:
+        - Search
+      parameters:
+        - type: string
+          description: |-
+            Search term 
+              Example: shoes
+          required: false
+          name: Ntt
+          in: query
+        - type: string
+          description: |-
+            Page number 
+             Example: 1, 2, 3
+          required: false
+          name: page
+          in: query
+        - type: string
+          description: |-
+            Zone ID 
+             Example: 13, 14
+          required: false
+          name: zone
+          in: query
+        - type: string
+          description: |-
+            Sort search results 
+             Example: prices:asc
+          required: false
+          name: sortBy
+          in: query
+        - type: string
+          description: |-
+            Color group 
+             Multiple values. Example: Verde::Rogo
+          required: false
+          name: f.colorGroup
+          in: query
+        - type: string
+          description: |-
+            Category 
+             Example: 'Banana Republic'
+          required: false
+          name: f.categories
+          in: query
+        - type: string
+          description: |-
+            Price range 
+             Example: 500-1000
+          required: false
+          name: f.priceRange
+          in: query
+        - type: string
+          description: |-
+            Size 
+             Example: L, M, XL
+          required: false
+          name: f.size
+          in: query
+        - type: string
+          description: |-
+            Ratings 
+             Example: '5 STAR'
+          required: false
+          name: f.ratings
+          in: query
+        - type: string
+          description: |-
+            Home delivery 
+             Example: 'yes'
+          required: false
+          name: f.availability.home_delivery_zones
+          in: query
+        - type: string
+          description: |-
+            Store pickup 
+             Example: 'yes'
+          required: false
+          name: f.availability.pick_up_store_zones
+          in: query
+        - type: string
+          description: |-
+            Boom pickup 
+             Example: 'yes'
+          required: false
+          name: f.availability.pick_up_Boom
+          in: query
+        - type: string
+          description: |-
+            Tenant Id 
+             Example: cl,pe
+          name: tenant
+          in: path
+          required: true
+      responses:
+        '200':
+          schema:
+            description: Search results response
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  layout:
+                    type: object
+                    properties:
+                      desktop:
+                        type: object
+                        properties:
+                          categoryType:
+                            type: string
+                            example: 4_GRID
+                          view:
+                            type: string
+                            example: 4_GRID
+                      mobile:
+                        type: object
+                        properties:
+                          categoryType:
+                            type: string
+                            example: 2_GRID
+                          view:
+                            type: string
+                            example: 2_GRID
+                  relatedKeywords:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        rank:
+                          type: number
+                        subtermino:
+                          type: string
+                        relevancia:
+                          type: number
+                  relatedKeywordBanner:
+                    type: string
+                  categoryParentDetails:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: cat720161
+                        label:
+                          type: string
+                          example: Smartphones
+                        link:
+                          type: string
+                          example: /category/cat720161/Smartphones
+                        isCurrent:
+                          type: boolean
+                          example: false
+                        isRoot:
+                          type: boolean
+                          example: false
+                  breadcrumb:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: cat720161
+                        label:
+                          type: string
+                          example: Smartphones
+                        link:
+                          type: string
+                          example: /category/cat720161/Smartphones
+                        isCurrent:
+                          type: boolean
+                          example: false
+                        isRoot:
+                          type: boolean
+                          example: false
+                  viewType:
+                    type: string
+                    example: LISTING
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        productId:
+                          type: string
+                          description: Product ID
+                          example: '881533699'
+                        skuId:
+                          type: string
+                          description: SKU ID
+                          example: '881533700'
+                        merchantCategoryId:
+                          type: string
+                          description: product backend category
+                          example: J15010503
+                        displayName:
+                          type: string
+                          description: Product Display Name
+                          example: Zapatilla Urbana Mujer Hazil
+                        productType:
+                          type: string
+                          description: Type of the product to be displayed
+                          example: REGULAR
+                        viewTemplate:
+                          type: string
+                          description: Type of the product to be displayed
+                          example: CONNECT
+                        url:
+                          type: string
+                          description: >-
+                            URL to PDP page, if a color swatch is selected that
+                            needs to be added
+                          example: >-
+                            /falabella-cl/product/881533699/Zapatilla-Urbana-Mujer-Hazil/881533700
+                        brand:
+                          type: string
+                          description: Brand
+                          example: Americanino
+                        model:
+                          type: string
+                          description: Model
+                          example: Iphone 7
+                        specifications:
+                          type: array
+                          description: Specifications
+                          items:
+                            type: string
+                            example: 'Tecnología: LED'
+                        media:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: '881533699'
+                            type:
+                              type: string
+                              description: |-
+                                1) PRODUCT 
+                                 2) SKU
+                              example: PRODUCT
+                            onImageHover:
+                              type: string
+                              description: |-
+                                Action on image hover
+                                                         1) ZOOM
+                                                         2) FETCH_SECOND_IMAGE
+                              example: ZOOM
+                        badges:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              position:
+                                type: number
+                              label:
+                                type: string
+                              styles:
+                                type: object
+                                properties:
+                                  backgroundColor:
+                                    type: string
+                                  textColor:
+                                    type: string
+                        prices:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              label:
+                                type: string
+                              icons:
+                                type: string
+                              symbol:
+                                type: string
+                              price:
+                                type: array
+                                items:
+                                  type: string
+                        totalReviews:
+                          type: string
+                          description: Total number of reviews on product
+                          example: '25'
+                        rating:
+                          type: string
+                          description: Average rating of the product
+                          example: '4'
+                        availability:
+                          type: object
+                          properties:
+                            cashOnDelivery:
+                              type: boolean
+                              description: Cash on delivery
+                              example: true
+                            homeDeliveryShipping:
+                              type:
+                                - string
+                                - boolean
+                              description: Home delivery
+                            pickUpFromStoreShipping:
+                              type:
+                                - string
+                                - boolean
+                              description: Click and Carry or Pickup in store
+                            internationalShipping:
+                              type:
+                                - string
+                                - boolean
+                              description: International Shipping
+                            primeShipping:
+                              type:
+                                - string
+                                - boolean
+                              description: Prime Shipping
+                              example: true
+                            expressShipping:
+                              type: boolean
+                              description: Express Shipping
+                              example: true
+                        variants:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                                description: |-
+                                  Specifies the type of the variant
+                                                                1) COLOR
+                                example: COLOR
+                              options:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    label:
+                                      type: string
+                                      description: Label
+                                      example: >-
+                                        https://staging.falabella.com/falabella-cl/product/12344/Zapato-Mujer-Babbi/efwfewf
+                                    url:
+                                      type: string
+                                      description: Label
+                                      example: Dorado
+                                    value:
+                                      type: string
+                                      description: Value
+                                      example: D7C3B4
+                                    extraInfo:
+                                      type: string
+                                      example: '6916320'
+                                    mediaId:
+                                      type: string
+                                      description: Media id
+                                      example: '881398125'
+                                    selected:
+                                      type: boolean
+                                      description: Selected
+                                      example: true
+                  facets:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          example: Categoría
+                        toolTip:
+                          type: string
+                          example: toolTip text
+                        type:
+                          type: string
+                          description: |-
+                            Specifies type of facet
+                              1) SINGLE_SELECT - Provides option to select single value
+                              2) SINGLE_SELECT_AS_LINK - Provides option to select single value as link
+                              3) MULTI_SELECT - Provides options to select multiple values as check boxes
+                              4) MULTI_SELECT_WITH_RANGE - Provides options to select multiple values as check boxes and a range box
+                              5) MULTI_SELECT_AS_COLOR - Provides options to select multiple values as color
+                          example: MULTI_SELECT
+                        state:
+                          type: string
+                          description: OPEN | ClOSED
+                          example: OPEN
+                        isSearchable:
+                          type: boolean
+                          example: true
+                        isMultiSelect:
+                          type: boolean
+                          example: true
+                        maxValuesVisible:
+                          type: number
+                          example: '5'
+                        order:
+                          type: number
+                          example: '5'
+                        attributes:
+                          type: object
+                          properties:
+                            unit:
+                              type: string
+                              description: Unit for the values
+                              example: $
+                        values:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              label:
+                                type: string
+                                example: Zapatos Mujer NUEVO
+                              count:
+                                type: number
+                                example: '100'
+                              facetType:
+                                type: string
+                              facetValue:
+                                type: string
+                              value:
+                                type: string
+                              selected:
+                                type: boolean
+                                example: false
+                              title:
+                                type: string
+                              attributes:
+                                type: object
+                                properties:
+                                  unit:
+                                    type: string
+                                    description: Unit for the values
+                                    example: $
+                                oneOf:
+                                  - type: 'null'
+                                  - type: object
+                                    properties:
+                                      unit:
+                                        type: string
+                                        description: Unit for the values
+                                        example: $
+                              url:
+                                type: string
+                                example: /falabella-cl/search/N-262t?Ntt=zapatos
+                              filters:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    name:
+                                      type: string
+                                      example: color
+                                      description: Facet Type
+                                    value:
+                                      type: string
+                                      example: 'red::blue'
+                                      description: Facet Values
+                        meta:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              count:
+                                type: number
+                              selected:
+                                type: boolean
+                              facetType:
+                                type: string
+                              facetValue:
+                                type: string
+                              title:
+                                type: string
+                              attributes:
+                                type: object
+                                properties:
+                                  unit:
+                                    type: string
+                              groupFacet:
+                                type: string
+                              url:
+                                type: string
+                              filters:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    name:
+                                      type: string
+                                      example: color
+                                      description: Facet Type
+                                    value:
+                                      type: string
+                                      example: 'red::blue'
+                                      description: Facet Values
+                  appliedFacets:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        attributes:
+                          type: object
+                          properties:
+                            unit:
+                              type: string
+                        facetType:
+                          type: string
+                        facetValue:
+                          type: string
+                        title:
+                          type: string
+                        url:
+                          type: string
+                        visible:
+                          type: boolean
+                  baseFacetsURL:
+                    type: string
+                  pagination:
+                    type: object
+                    properties:
+                      total:
+                        type: number
+                        example: 120300
+                      count:
+                        type: number
+                        example: 10
+                      perPage:
+                        type: number
+                        example: 10
+                      currentPage:
+                        type: number
+                        example: 1
+                      totalPages:
+                        type: number
+                        example: 12030
+                  sortOptions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        label:
+                          type: string
+                          example: Precio de menor a mayor
+                        selected:
+                          type: boolean
+                          example: true
+                        url:
+                          type: string
+                          example: Ntt=termo&sortBy=relevance
+                  availabilityFacets:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        group:
+                          type: string
+                        isSearchable:
+                          type: boolean
+                        maxValuesVisible:
+                          type: number
+                        name:
+                          type: string
+                        state:
+                          type: string
+                        toolTip:
+                          type: string
+                        type:
+                          type: string
+                        values:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              count:
+                                type: number
+                              facetType:
+                                type: string
+                              facetValue:
+                                type: string
+                              groupFacet:
+                                type: string
+                              selected:
+                                type: boolean
+                              title:
+                                type: string
+                              url:
+                                type: string
+                              isBoomApplicable:
+                                type: boolean
+                              filters:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    name:
+                                      type: string
+                                      example: color
+                                      description: Facet Type
+                                    value:
+                                      type: string
+                                      example: 'red::blue'
+                                      description: Facet Values
+                  autoCorrections:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        label:
+                          type: string
+                        url:
+                          type: string
+                  viewOptions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: GRID
+                        columns:
+                          type: number
+                          example: 4
+                        default:
+                          type: boolean
+                          example: true
+                        visible:
+                          type: boolean
+                          example: true
+                  endPoints:
+                    type: object
+                    properties:
+                      media:
+                        type: object
+                        properties:
+                          url:
+                            type: string
+                            example: 'https://falabella.scene7.com/is/image/Falabella/'
+                          baseImageURL:
+                            type: string
+                            example: 'https://falabella.scene7.com/is/image/'
+                  altUrl:
+                    type: string
+                  categoryData:
+                    type: object
+              responseType:
+                type: string
+              reqBody:
+                type: object
+                additionalProperties: true
+          description: Search results response
+  '/v1/product/{tenant}/':
+    get:
+      summary: Perform Search with given query
+      description: |-
+        Product search API 
+
+         Example : /v1/cl?q=shoes
+      tags:
+        - Search
+      parameters:
+        - type: string
+          description: |-
+            Search term 
+              Example: shoes
+          required: false
+          name: site
+          in: query
+        - type: string
+          description: |-
+            Page number 
+             Example: 1, 2, 3
+          required: false
+          name: productId
+          in: query
+        - type: string
+          description: |-
+            Zone ID 
+             Example: 13, 14
+          required: false
+          name: zone
+          in: query
+        - type: string
+          description: |-
+            Sort search results 
+             Example: prices:asc
+          required: false
+          name: productName
+          in: query
+        - type: string
+          description: |-
+            Sort search results 
+             Example: prices:asc
+          required: false
+          name: variantId
+          in: query
+        - type: string
+          description: |-
+            Tenant Id 
+             Example: cl,pe
+          name: tenant
+          in: path
+          required: true
+      responses:
+        '200':
+          schema:
+            type: object
+            required: []
+            properties:
+              data:
+                type: object
+                required: []
+                properties:
+                  id:
+                    type: number
+                    example: '4989166'
+                    description: ''
+                  name:
+                    type: string
+                    example: LED 40" KDL-40W655D LA8 Full HD Smart TV
+                    description: ''
+                  brandName:
+                    type: string
+                    example: Sony
+                    description: ''
+                  brandId:
+                    type: string
+                    example: SONY
+                    description: ''
+                  description:
+                    type: string
+                    example: Sony LED 40" KDL-40W655D LA8 Full HD Smart TV
+                    description: ''
+                  longDescription:
+                    type: string
+                    example: html string
+                    description: ''
+                  productType:
+                    type: string
+                    example: REGULAR
+                    description: ''
+                  slug:
+                    type: string
+                    example: LED-40-KDL-40W655D-LA8-Full-HD-Smart-TV
+                    description: ''
+                  primaryVariantId:
+                    type: number
+                    example: '4989166'
+                    description: ''
+                  defaultParentCategoryId:
+                    type: string
+                    example: cat7190148
+                    description: ''
+                  merchantCategoryId:
+                    type: string
+                    example: J11010304
+                    description: ''
+                  helplineNumber:
+                    type: string
+                    example: 2 2390 6505
+                    description: ''
+                  isPublished:
+                    type: boolean
+                    example: 'true'
+                    description: ''
+                  breadCrumb:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: cat720161
+                          label:
+                            type: string
+                            example: Smartphones
+                          link:
+                            type: string
+                            example: /category/cat720161/Smartphones
+                          isCurrent:
+                            type: boolean
+                            example: false
+                          isRoot:
+                            type: boolean
+                            example: false
+                  attributes:
+                    type: object
+                    properties:
+                      isPrimeAvailable:
+                        type: boolean
+                        example: false
+                        description: ''
+                      viewTemplate:
+                        type: string
+                        example: NORMAL
+                        description: ''
+                      isPumAvailable:
+                        type: boolean
+                        example: false
+                        description: ''
+                      internetExclusiveIcon:
+                        type: boolean
+                        example: false
+                        description: ''
+                      newIconExpiryDate:
+                        type: string
+                        example: '2010-01-01T03:00:00Z'
+                        description: ''
+                      sizeChart:
+                        type: object
+                        properties: {}
+                        description: ''
+                      specifications:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: Temporada
+                              description: ''
+                            name:
+                              type: string
+                              example: Temporada
+                              description: ''
+                            value:
+                              type: string
+                              example: Toda temporada
+                              description: ''
+                        description: ''
+                      topSpecifications:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              example: Temporada
+                              description: ''
+                            value:
+                              type: string
+                              example: Toda temporada
+                              description: ''
+                        description: ''
+                  variants:
+                    type: array
+                    items:
+                      type: object
+                      required: []
+                      properties:
+                        id:
+                          type: number
+                          example: '4989166'
+                          description: ''
+                        name:
+                          type: string
+                          example: LED 40" KDL-40W655D LA8 Full HD Smart TV
+                          description: ''
+                        productType:
+                          type: string
+                          example: REGULAR
+                          description: ''
+                        sortOrder:
+                          type: number
+                          example: '0'
+                          description: ''
+                        media:
+                          type: object
+                          required: []
+                          properties: {}
+                          description: ''
+                        cmrPoints:
+                          type: number
+                          example: '1733'
+                          description: ''
+                        badges:
+                          type: number
+                          example: ''
+                          description: ''
+                        availability:
+                          type: array
+                          items:
+                            type: object
+                            required: []
+                            properties:
+                              variantId:
+                                type: number
+                                example: '4989166'
+                                description: ''
+                              sellerId:
+                                type: string
+                                example: FALABELLA
+                                description: ''
+                              offeringId:
+                                type: number
+                                example: '4989166'
+                                description: ''
+                              stockGeoTypeKey:
+                                type: string
+                                example: Zone
+                                description: ''
+                              stockGeoTypeId:
+                                type: number
+                                example: '13'
+                                description: ''
+                              shippingOptionType:
+                                type: string
+                                example: PickupInStore
+                                description: ''
+                              stateOfStock:
+                                type: string
+                                example: InStock
+                                description: ''
+                              hasStock:
+                                type: boolean
+                                example: 'true'
+                                description: ''
+                              quantity:
+                                type: number
+                                example: '29'
+                                description: ''
+                              sourceUpdatedAt:
+                                type: string
+                                example: '2019-12-24T18:15:43.294Z'
+                                description: ''
+                          description: ''
+                        prices:
+                          type: array
+                          items:
+                            type: object
+                            required: []
+                            properties:
+                              label:
+                                type: number
+                                example: ''
+                                description: ''
+                              icons:
+                                type: number
+                                example: ''
+                                description: ''
+                              symbol:
+                                type: string
+                                example: '$ '
+                                description: ''
+                              type:
+                                type: string
+                                example: internetPrice
+                                description: ''
+                              price:
+                                type: array
+                                items:
+                                  type: string
+                                example: '259.990'
+                                description: ''
+                          description: ''
+                        offerings:
+                          type: array
+                          items:
+                            type: object
+                            required: []
+                            properties:
+                              sellerId:
+                                type: string
+                                example: FALABELLA
+                                description: ''
+                              startDate:
+                                type: string
+                                example: '2010-01-01T03:00:00Z'
+                                description: ''
+                              offeringId:
+                                type: number
+                                example: '4989166'
+                                description: ''
+                              sellerProductStatus:
+                                type: string
+                                example: ACTIVO
+                                description: ''
+                          description: ''
+                        attributes:
+                          type: object
+                          required: []
+                          properties:
+                            topSpecifications:
+                              type: number
+                              example: ''
+                              description: ''
+                            specifications:
+                              type: number
+                              example: ''
+                              description: ''
+                            sizeChart:
+                              type: object
+                              required: []
+                              properties: {}
+                              description: ''
+                        skuCollectionIds:
+                          type: array
+                          items:
+                            type: string
+                  layoutType:
+                    type: string
+                    example: HARDLINE
+                    description: ''
+                  guideSymbol:
+                    type: boolean
+                    example: 'false'
+                    description: ''
+                  mediaList:
+                    type: number
+                    example: ''
+                    description: ''
+                  internationalShipping:
+                    type: object
+                    required: []
+                    properties:
+                      applicable:
+                        type: boolean
+                        example: 'false'
+                        description: ''
+                      url:
+                        type: number
+                        example: ''
+                        description: ''
+                    description: ''
+                  sizeInfo:
+                    type: number
+                    example: ''
+                    description: ''
+                  warrantyOptions:
+                    type: object
+                    required: []
+                    properties:
+                      extendedWarrantyLightBoxLink:
+                        type: string
+                        example: /falabella-cl/page/garantia?staticPageId=11300003
+                        description: ''
+                      fieldName:
+                        type: string
+                        example: Warranty
+                        description: ''
+                      fieldType:
+                        type: number
+                        example: '2'
+                        description: ''
+                      label:
+                        type: string
+                        example: Garantía Extendida
+                        description: ''
+                      fieldOptions:
+                        type: array
+                        items:
+                          type: object
+                          required: []
+                          properties:
+                            label:
+                              type: string
+                              example: ' 3 Años $79.990'
+                              description: ''
+                            value:
+                              type: number
+                              example: '2799123'
+                              description: ''
+                            selected:
+                              type: boolean
+                              example: 'false'
+                              description: ''
+                        description: ''
+                        example: '[object Object],[object Object],[object Object]'
+                  currentVariant:
+                    type: number
+                    example: '4989166'
+                    description: ''
+                  linkedProducts:
+                    type: object
+                    required: []
+                    properties:
+                      '3651417':
+                        type: object
+                        required: []
+                        properties:
+                          id:
+                            type: number
+                            example: '3651417'
+                            description: ''
+                          name:
+                            type: string
+                            example: Teclado Inalámbrico K400
+                            description: ''
+                          attributes:
+                            type: object
+                            required: []
+                            properties:
+                              isPrimeAvailable:
+                                type: boolean
+                                example: 'true'
+                                description: ''
+                              viewTemplate:
+                                type: string
+                                example: NORMAL
+                                description: ''
+                              isPumAvailable:
+                                type: boolean
+                                example: 'false'
+                                description: ''
+                              internetExclusiveIcon:
+                                type: boolean
+                                example: 'false'
+                                description: ''
+                              topSpecifications:
+                                type: array
+                                items:
+                                  type: object
+                                  required: []
+                                  properties:
+                                    name:
+                                      type: string
+                                      example: Compatibilidad
+                                      description: ''
+                                    value:
+                                      type: string
+                                      example: Windows/Chrome
+                                      description: ''
+                                description: ''
+                                example: >-
+                                  [object Object],[object Object],[object
+                                  Object],[object Object],[object Object]
+                              specifications:
+                                type: number
+                                example: ''
+                                description: ''
+                              sizeChart:
+                                type: object
+                                required: []
+                                properties: {}
+                                description: ''
+                            description: ''
+                          brandName:
+                            type: string
+                            example: Logitech
+                            description: ''
+                          currentVariant:
+                            type: number
+                            example: '3651417'
+                            description: ''
+                        description: ''
+                description: ''
+          description: Default Response
