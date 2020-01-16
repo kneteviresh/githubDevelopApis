@@ -621,11 +621,9 @@ paths:
         - Search
       parameters:
         - type: string
-          description: |-
-            Search term 
-              Example: shoes
+          description: Search by categoryId
           required: false
-          name: Ntt
+          name: categoryId
           in: query
         - type: string
           description: |-
@@ -650,31 +648,31 @@ paths:
           in: query
         - type: string
           description: |-
-            Color group 
-             Multiple values. Example: Verde::Rogo
+            Brand name 
+             Multiple values. Example: Reebok, nike
           required: false
-          name: f.colorGroup
+          name: f.product.brandName
           in: query
         - type: string
           description: |-
-            Category 
-             Example: 'Banana Republic'
+            Protuct types 
+             Multiple values. Example: 'Sweaters'
           required: false
-          name: f.categories
+          name: f.product.attribute.Tipo
           in: query
         - type: string
           description: |-
-            Price range 
+            Price range facet 
              Example: 500-1000
           required: false
-          name: f.priceRange
+          name: f.range.derived.price.search.event
           in: query
         - type: string
           description: |-
-            Size 
-             Example: L, M, XL
+            Price range manual 
+             Example: 500-1000
           required: false
-          name: f.size
+          name: r.range.derived.price.search.event
           in: query
         - type: string
           description: |-
@@ -1244,6 +1242,26 @@ paths:
                         visible:
                           type: boolean
                           example: true
+                  metadata:
+                    type: object
+                    required: []
+                    properties:
+                      description:
+                        type: string
+                        example: >-
+                          Compra Smartphones en Falabella.com: Descubre
+                          Smartphones con lo último en tecnología. Elige la
+                          marca y la compañía que más se adapte a tus
+                          necesidades.
+                        description: ''
+                      id:
+                        type: string
+                        example: cat720161
+                        description: ''
+                      displayName:
+                        type: string
+                        example: Smartphones
+                        description: ''
                   endPoints:
                     type: object
                     properties:
@@ -1592,6 +1610,14 @@ paths:
                           type: object
                           required: []
                           properties:
+                            size:
+                              type: string
+                              example: xl
+                              description: ''
+                            primaryColor:
+                              type: string
+                              example: Rosado|DA8397
+                              description: ''
                             topSpecifications:
                               type: number
                               example: ''
@@ -1604,6 +1630,18 @@ paths:
                               type: object
                               required: []
                               properties: {}
+                              description: ''
+                            colorName:
+                              type: string
+                              example: Rosado
+                              description: ''
+                            colorCode:
+                              type: string
+                              example: DA8397
+                              description: ''
+                            sizeOrder:
+                              type: number
+                              example: '3'
                               description: ''
                         skuCollectionIds:
                           type: array
