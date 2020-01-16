@@ -1601,8 +1601,36 @@ paths:
                         description: ''
                     description: ''
                   sizeInfo:
-                    type: number
-                    example: ''
+                    type: array
+                    items:
+                      type: object
+                      required: []
+                      properties:
+                        title:
+                          type: string
+                          example: '39.5'
+                          description: ''
+                        sizeMap:
+                          type: object
+                          required: []
+                          properties:
+                            EUR:
+                              type: string
+                              example: '40.5'
+                              description: ''
+                            US:
+                              type: string
+                              example: '7.5'
+                              description: ''
+                            UK:
+                              type: number
+                              example: '7'
+                              description: ''
+                            CM:
+                              type: string
+                              example: '25.75'
+                              description: ''
+                          description: ''
                     description: ''
                   warrantyOptions:
                     type: object
