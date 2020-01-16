@@ -27,11 +27,9 @@ paths:
         - Search
       parameters:
         - type: string
-          description: |-
-            Search term 
-              Example: camisa
+          description: Search by categoryId
           required: false
-          name: Ntt
+          name: categoryId
           in: query
         - type: string
           description: |-
@@ -56,59 +54,24 @@ paths:
           in: query
         - type: string
           description: |-
-            Color group 
-             Multiple values. Example: Verde::Rogo
+            Brand name 
+             Multiple values. Example: Reebok, nike
           required: false
-          name: f.colorGroup
+          name: f.product.brandName
           in: query
         - type: string
           description: |-
-            Category 
-             Example: 'Banana Republic'
+            Protuct types 
+             Multiple values. Example: 'Sweaters'
           required: false
-          name: f.categories
+          name: f.product.attribute.Tipo
           in: query
         - type: string
           description: |-
-            Price range 
+            Price range facet 
              Example: 500-1000
           required: false
-          name: f.priceRange
-          in: query
-        - type: string
-          description: |-
-            Size 
-             Example: L, M, XL
-          required: false
-          name: f.size
-          in: query
-        - type: string
-          description: |-
-            Ratings 
-             Example: '5 STAR'
-          required: false
-          name: f.ratings
-          in: query
-        - type: string
-          description: |-
-            Home delivery 
-             Example: 'yes'
-          required: false
-          name: f.availability.home_delivery_zones
-          in: query
-        - type: string
-          description: |-
-            Store pickup 
-             Example: 'yes'
-          required: false
-          name: f.availability.pick_up_store_zones
-          in: query
-        - type: string
-          description: |-
-            Boom pickup 
-             Example: 'yes'
-          required: false
-          name: f.availability.pick_up_Boom
+          name: f.range.derived.price.search.event
           in: query
         - type: string
           description: |-
@@ -666,41 +629,6 @@ paths:
              Example: 500-1000
           required: false
           name: f.range.derived.price.search.event
-          in: query
-        - type: string
-          description: |-
-            Price range manual 
-             Example: 500-1000
-          required: false
-          name: r.range.derived.price.search.event
-          in: query
-        - type: string
-          description: |-
-            Ratings 
-             Example: '5 STAR'
-          required: false
-          name: f.ratings
-          in: query
-        - type: string
-          description: |-
-            Home delivery 
-             Example: 'yes'
-          required: false
-          name: f.availability.home_delivery_zones
-          in: query
-        - type: string
-          description: |-
-            Store pickup 
-             Example: 'yes'
-          required: false
-          name: f.availability.pick_up_store_zones
-          in: query
-        - type: string
-          description: |-
-            Boom pickup 
-             Example: 'yes'
-          required: false
-          name: f.availability.pick_up_Boom
           in: query
         - type: string
           description: |-
