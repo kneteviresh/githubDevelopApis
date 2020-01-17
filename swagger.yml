@@ -1218,8 +1218,929 @@ paths:
           description: Category results response
   '/v1/product/{tenant}/':
     get:
+      summary: Search product by productId
+      description: |-
+        Product details API 
+
+         Example : /v1/product
+      tags:
+        - Product
+      parameters:
+        - required: false
+          type: string
+          description: |-
+            Page number 
+             Example: 1, 2, 3
+          name: productId
+          in: query
+        - type: string
+          description: |-
+            Zone ID 
+             Example: 13, 14
+          required: false
+          name: zone
+          in: query
+        - type: string
+          description: |-
+            Sort search results 
+             Example: prices:asc
+          required: false
+          name: productName
+          in: query
+        - type: string
+          description: |-
+            Sort search results 
+             Example: prices:asc
+          required: false
+          name: variantId
+          in: query
+        - type: string
+          description: |-
+            Tenant Id 
+             Example: cl,pe
+          name: tenant
+          in: path
+          required: true
       responses:
         '200':
+          schema:
+            type: object
+            required: []
+            properties:
+              responseType:
+                type: string
+                example: OUT_OF_STOCK
+                description: ''
+              data:
+                type: object
+                required: []
+                properties:
+                  id:
+                    type: string
+                    example: '4989166'
+                    description: ''
+                  name:
+                    type: string
+                    example: LED 40" KDL-40W655D LA8 Full HD Smart TV
+                    description: ''
+                  brandName:
+                    type: string
+                    example: Sony
+                    description: ''
+                  brandId:
+                    type: string
+                    example: SONY
+                    description: ''
+                  description:
+                    type: string
+                    example: Sony LED 40" KDL-40W655D LA8 Full HD Smart TV
+                    description: ''
+                  longDescription:
+                    type: string
+                    example: html string
+                    description: ''
+                  productType:
+                    type: string
+                    example: REGULAR
+                    description: ''
+                  slug:
+                    type: string
+                    example: LED-40-KDL-40W655D-LA8-Full-HD-Smart-TV
+                    description: ''
+                  primaryVariantId:
+                    type: string
+                    example: '4989166'
+                    description: ''
+                  defaultParentCategoryId:
+                    type: string
+                    example: cat7190148
+                    description: ''
+                  merchantCategoryId:
+                    type: string
+                    example: J11010304
+                    description: ''
+                  helplineNumber:
+                    type: string
+                    example: 2 2390 6505
+                    description: ''
+                  isPublished:
+                    type: boolean
+                    example: true
+                    description: ''
+                  breadCrumb:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: cat720161
+                          label:
+                            type: string
+                            example: Smartphones
+                          link:
+                            type: string
+                            example: /category/cat720161/Smartphones
+                          isCurrent:
+                            type: boolean
+                            example: false
+                          isRoot:
+                            type: boolean
+                            example: false
+                  attributes:
+                    type: object
+                    properties:
+                      isPrimeAvailable:
+                        type: boolean
+                        example: false
+                        description: ''
+                      viewTemplate:
+                        type: string
+                        example: NORMAL
+                        description: ''
+                      isPumAvailable:
+                        type: boolean
+                        example: false
+                        description: ''
+                      internetExclusiveIcon:
+                        type: boolean
+                        example: false
+                        description: ''
+                      newIconExpiryDate:
+                        type: string
+                        example: '2010-01-01T03:00:00Z'
+                        description: ''
+                      sizeChart:
+                        type: object
+                        properties: {}
+                        description: ''
+                      sameImage:
+                        type: boolean
+                        example: false
+                        description: ''
+                      pumQuantity:
+                        type: number
+                        example: '10'
+                        description: ''
+                      pumUnits:
+                        type: string
+                        example: Mililitro
+                        description: ''
+                      specifications:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: Temporada
+                              description: ''
+                            name:
+                              type: string
+                              example: Temporada
+                              description: ''
+                            value:
+                              type: string
+                              example: Toda temporada
+                              description: ''
+                        description: ''
+                      topSpecifications:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              example: Temporada
+                              description: ''
+                            value:
+                              type: string
+                              example: Toda temporada
+                              description: ''
+                        description: ''
+                  variants:
+                    type: array
+                    items:
+                      type: object
+                      required: []
+                      properties:
+                        id:
+                          type: number
+                          example: '4989166'
+                          description: ''
+                        name:
+                          type: string
+                          example: LED 40" KDL-40W655D LA8 Full HD Smart TV
+                          description: ''
+                        productType:
+                          type: string
+                          example: REGULAR
+                          description: ''
+                        sortOrder:
+                          type: number
+                          example: '0'
+                          description: ''
+                        media:
+                          type: object
+                          required: []
+                          properties: {}
+                          description: ''
+                        cmrPoints:
+                          type: number
+                          example: '1733'
+                          description: ''
+                        badges:
+                          type: array
+                          items:
+                            type: object
+                            required: []
+                            properties:
+                              position:
+                                type: number
+                                example: '1'
+                                description: ''
+                              label:
+                                type: string
+                                example: Express 90'
+                                description: ''
+                              styles:
+                                type: object
+                                required: []
+                                properties:
+                                  backgroundColor:
+                                    type: string
+                                    example: '#888888'
+                                    description: ''
+                                  textColor:
+                                    type: string
+                                    example: '#ffffff'
+                                    description: ''
+                                description: ''
+                          description: ''
+                        availability:
+                          type: array
+                          items:
+                            type: object
+                            required: []
+                            properties:
+                              variantId:
+                                type: number
+                                example: '4989166'
+                                description: ''
+                              sellerId:
+                                type: string
+                                example: FALABELLA
+                                description: ''
+                              offeringId:
+                                type: number
+                                example: '4989166'
+                                description: ''
+                              stockGeoTypeKey:
+                                type: string
+                                example: Zone
+                                description: ''
+                              stockGeoTypeId:
+                                type: number
+                                example: '13'
+                                description: ''
+                              shippingOptionType:
+                                type: string
+                                example: PickupInStore
+                                description: ''
+                              stateOfStock:
+                                type: string
+                                example: InStock
+                                description: ''
+                              hasStock:
+                                type: boolean
+                                example: 'true'
+                                description: ''
+                              quantity:
+                                type: number
+                                example: '29'
+                                description: ''
+                              sourceUpdatedAt:
+                                type: string
+                                example: '2019-12-24T18:15:43.294Z'
+                                description: ''
+                          description: ''
+                        prices:
+                          type: array
+                          items:
+                            type: object
+                            required: []
+                            properties:
+                              label:
+                                type: number
+                                example: ''
+                                description: ''
+                              icons:
+                                type: number
+                                example: ''
+                                description: ''
+                              symbol:
+                                type: string
+                                example: '$ '
+                                description: ''
+                              type:
+                                type: string
+                                example: internetPrice
+                                description: ''
+                              price:
+                                type: array
+                                items:
+                                  type: string
+                                example: '259.990'
+                                description: ''
+                          description: ''
+                        offerings:
+                          type: array
+                          items:
+                            type: object
+                            required: []
+                            properties:
+                              sellerId:
+                                type: string
+                                example: FALABELLA
+                                description: ''
+                              startDate:
+                                type: string
+                                example: '2010-01-01T03:00:00Z'
+                                description: ''
+                              offeringId:
+                                type: number
+                                example: '4989166'
+                                description: ''
+                              sellerProductStatus:
+                                type: string
+                                example: ACTIVO
+                                description: ''
+                          description: ''
+                        attributes:
+                          type: object
+                          required: []
+                          properties:
+                            size:
+                              type: string
+                              example: xl
+                              description: ''
+                            primaryColor:
+                              type: string
+                              example: Rosado|DA8397
+                              description: ''
+                            topSpecifications:
+                              type: number
+                              example: ''
+                              description: ''
+                            specifications:
+                              type: number
+                              example: ''
+                              description: ''
+                            sizeChart:
+                              type: object
+                              required: []
+                              properties: {}
+                              description: ''
+                            colorName:
+                              type: string
+                              example: Rosado
+                              description: ''
+                            colorCode:
+                              type: string
+                              example: DA8397
+                              description: ''
+                            sizeOrder:
+                              type: number
+                              example: '3'
+                              description: ''
+                        skuCollectionIds:
+                          type: array
+                          items:
+                            type: string
+                        monthlyCost:
+                          type: array
+                          items:
+                            type: object
+                            required: []
+                            properties:
+                              symbol:
+                                type: string
+                                example: '$ '
+                                description: ''
+                              type:
+                                type: number
+                                example: '0'
+                                description: ''
+                              price:
+                                type: array
+                                items:
+                                  type: string
+                                example: '17.990'
+                                description: ''
+                          description: ''
+                        deviceCost:
+                          type: array
+                          items:
+                            type: object
+                            required: []
+                            properties:
+                              label:
+                                type: string
+                                example: ''
+                                description: ''
+                              icons:
+                                type: string
+                                example: cmr-icon
+                                description: ''
+                              symbol:
+                                type: string
+                                example: '$ '
+                                description: ''
+                              type:
+                                type: string
+                                example: cmrPrice
+                                description: ''
+                              price:
+                                type: string
+                                example: '40'
+                                description: ''
+                          description: ''
+                        deviceCmrPoints:
+                          type: number
+                          example: '0'
+                          description: ''
+                  layoutType:
+                    type: string
+                    example: HARDLINE
+                    description: ''
+                  guideSymbol:
+                    type: boolean
+                    example: false
+                    description: ''
+                  mediaList:
+                    type: number
+                    example: ''
+                    description: ''
+                  shareIcons:
+                    type: array
+                    items:
+                      type: object
+                      required: []
+                      properties:
+                        name:
+                          type: string
+                          example: FACEBOOK
+                          description: ''
+                        icon:
+                          type: string
+                          example: facebook
+                          description: ''
+                        mobileOnly:
+                          type: boolean
+                          example: 'false'
+                          description: ''
+                        shareUrl:
+                          type: string
+                          example: >-
+                            https://www.facebook.com/sharer.php?u=https://staging.falabella.com/falabella-cl/product/4989166/LED-40-KDL-40W655D-LA8-Full-HD-Smart-TV/{currentVariant}
+                          description: ''
+                    description: ''
+                  internationalShipping:
+                    type: object
+                    required: []
+                    properties:
+                      applicable:
+                        type: boolean
+                        example: false
+                        description: ''
+                      url:
+                        type: number
+                        example: ''
+                        description: ''
+                    description: ''
+                  sizeInfo:
+                    type: array
+                    items:
+                      type: object
+                      required: []
+                      properties:
+                        title:
+                          type: string
+                          example: '39.5'
+                          description: ''
+                        sizeMap:
+                          type: object
+                          required: []
+                          properties:
+                            EUR:
+                              type: string
+                              example: '40.5'
+                              description: ''
+                            US:
+                              type: string
+                              example: '7.5'
+                              description: ''
+                            UK:
+                              type: number
+                              example: '7'
+                              description: ''
+                            CM:
+                              type: string
+                              example: '25.75'
+                              description: ''
+                          description: ''
+                    description: ''
+                  returnPolicy:
+                    type: object
+                    required: []
+                    properties:
+                      headerLabel:
+                        type: string
+                        example: Satisfacción garantizada
+                        description: ''
+                      infoLabel:
+                        type: string
+                        example: >-
+                          30 días para cambios o devoluciones gratis en
+                          cualquier tienda Falabella.
+                        description: ''
+                      linkLabel:
+                        type: string
+                        example: ' Más información'
+                        description: ''
+                      linkURL:
+                        type: string
+                        example: >-
+                          https://www.falabella.com/falabella-cl/page/Cambios-y-Devoluciones?staticPageId=11300005&cxFrom=pdp
+                        description: ''
+                      mobileTitle:
+                        type: string
+                        example: Politica de cambios y devoluciones
+                        description: ''
+                  warrantyOptions:
+                    type: object
+                    required: []
+                    properties:
+                      extendedWarrantyLightBoxLink:
+                        type: string
+                        example: /falabella-cl/page/garantia?staticPageId=11300003
+                        description: ''
+                      fieldName:
+                        type: string
+                        example: Warranty
+                        description: ''
+                      fieldType:
+                        type: number
+                        example: '2'
+                        description: ''
+                      label:
+                        type: string
+                        example: Garantía Extendida
+                        description: ''
+                      fieldOptions:
+                        type: array
+                        items:
+                          type: object
+                          required: []
+                          properties:
+                            label:
+                              type: string
+                              example: ' 3 Años $79.990'
+                              description: ''
+                            value:
+                              type: string
+                              example: '2799123'
+                              description: ''
+                            selected:
+                              type: boolean
+                              example: 'false'
+                              description: ''
+                        description: ''
+                  serviceOptions:
+                    type: object
+                    required: []
+                    properties:
+                      header:
+                        type: string
+                        example: Selecciona servicios adicionales
+                        description: ''
+                      services:
+                        type: array
+                        items:
+                          type: object
+                          required: []
+                          properties:
+                            label:
+                              type: string
+                              example: Armado $24.990
+                              description: ''
+                            value:
+                              type: string
+                              example: '4513428'
+                              description: ''
+                            selected:
+                              type: boolean
+                              example: 'false'
+                              description: ''
+                        description: ''
+                  currentVariant:
+                    type: string
+                    example: '4989166'
+                    description: ''
+                  linkedProducts:
+                    type: object
+                    required: []
+                    properties:
+                      '3651417':
+                        type: object
+                        required: []
+                        properties:
+                          id:
+                            type: number
+                            example: '3651417'
+                            description: ''
+                          name:
+                            type: string
+                            example: Teclado Inalámbrico K400
+                            description: ''
+                          attributes:
+                            type: object
+                            required: []
+                            properties:
+                              isPrimeAvailable:
+                                type: boolean
+                                example: false
+                                description: ''
+                              viewTemplate:
+                                type: string
+                                example: NORMAL
+                                description: ''
+                              isPumAvailable:
+                                type: boolean
+                                example: false
+                                description: ''
+                              internetExclusiveIcon:
+                                type: boolean
+                                example: false
+                                description: ''
+                              newIconExpiryDate:
+                                type: string
+                                example: '2010-01-01T03:00:00Z'
+                                description: ''
+                              sizeChart:
+                                type: object
+                                required: []
+                                properties: {}
+                                description: ''
+                              sameImage:
+                                type: boolean
+                                example: false
+                                description: ''
+                              pumQuantity:
+                                type: number
+                                example: '10'
+                                description: ''
+                              pumUnits:
+                                type: string
+                                example: Mililitro
+                                description: ''
+                              topSpecifications:
+                                type: array
+                                items:
+                                  type: object
+                                  required: []
+                                  properties:
+                                    name:
+                                      type: string
+                                      example: Compatibilidad
+                                      description: ''
+                                    value:
+                                      type: string
+                                      example: Windows/Chrome
+                                      description: ''
+                                description: ''
+                                example: >-
+                                  [object Object],[object Object],[object
+                                  Object],[object Object],[object Object]
+                              specifications:
+                                type: number
+                                example: ''
+                                description: ''
+                            description: ''
+                          variants:
+                            type: array
+                            items:
+                              type: object
+                              required: []
+                              properties:
+                                id:
+                                  type: number
+                                  example: '4989166'
+                                  description: ''
+                                name:
+                                  type: string
+                                  example: LED 40" KDL-40W655D LA8 Full HD Smart TV
+                                  description: ''
+                                productType:
+                                  type: string
+                                  example: REGULAR
+                                  description: ''
+                                sortOrder:
+                                  type: number
+                                  example: '0'
+                                  description: ''
+                                media:
+                                  type: object
+                                  required: []
+                                  properties: {}
+                                  description: ''
+                                cmrPoints:
+                                  type: number
+                                  example: '1733'
+                                  description: ''
+                                badges:
+                                  type: number
+                                  example: ''
+                                  description: ''
+                                availability:
+                                  type: array
+                                  items:
+                                    type: object
+                                    required: []
+                                    properties:
+                                      variantId:
+                                        type: number
+                                        example: '4989166'
+                                        description: ''
+                                      sellerId:
+                                        type: string
+                                        example: FALABELLA
+                                        description: ''
+                                      offeringId:
+                                        type: number
+                                        example: '4989166'
+                                        description: ''
+                                      stockGeoTypeKey:
+                                        type: string
+                                        example: Zone
+                                        description: ''
+                                      stockGeoTypeId:
+                                        type: number
+                                        example: '13'
+                                        description: ''
+                                      shippingOptionType:
+                                        type: string
+                                        example: PickupInStore
+                                        description: ''
+                                      stateOfStock:
+                                        type: string
+                                        example: InStock
+                                        description: ''
+                                      hasStock:
+                                        type: boolean
+                                        example: 'true'
+                                        description: ''
+                                      quantity:
+                                        type: number
+                                        example: '29'
+                                        description: ''
+                                      sourceUpdatedAt:
+                                        type: string
+                                        example: '2019-12-24T18:15:43.294Z'
+                                        description: ''
+                                  description: ''
+                                prices:
+                                  type: array
+                                  items:
+                                    type: object
+                                    required: []
+                                    properties:
+                                      label:
+                                        type: number
+                                        example: ''
+                                        description: ''
+                                      icons:
+                                        type: number
+                                        example: ''
+                                        description: ''
+                                      symbol:
+                                        type: string
+                                        example: '$ '
+                                        description: ''
+                                      type:
+                                        type: string
+                                        example: internetPrice
+                                        description: ''
+                                      price:
+                                        type: array
+                                        items:
+                                          type: string
+                                        example: '259.990'
+                                        description: ''
+                                  description: ''
+                                offerings:
+                                  type: array
+                                  items:
+                                    type: object
+                                    required: []
+                                    properties:
+                                      sellerId:
+                                        type: string
+                                        example: FALABELLA
+                                        description: ''
+                                      startDate:
+                                        type: string
+                                        example: '2010-01-01T03:00:00Z'
+                                        description: ''
+                                      offeringId:
+                                        type: number
+                                        example: '4989166'
+                                        description: ''
+                                      sellerProductStatus:
+                                        type: string
+                                        example: ACTIVO
+                                        description: ''
+                                  description: ''
+                                attributes:
+                                  type: object
+                                  required: []
+                                  properties:
+                                    isPrimeAvailable:
+                                      type: boolean
+                                      example: false
+                                      description: ''
+                                    viewTemplate:
+                                      type: string
+                                      example: NORMAL
+                                      description: ''
+                                    isPumAvailable:
+                                      type: boolean
+                                      example: false
+                                      description: ''
+                                    internetExclusiveIcon:
+                                      type: boolean
+                                      example: false
+                                      description: ''
+                                    newIconExpiryDate:
+                                      type: string
+                                      example: '2010-01-01T03:00:00Z'
+                                      description: ''
+                                    sizeChart:
+                                      type: object
+                                      required: []
+                                      properties: {}
+                                      description: ''
+                                    sameImage:
+                                      type: boolean
+                                      example: false
+                                      description: ''
+                                    pumQuantity:
+                                      type: number
+                                      example: '10'
+                                      description: ''
+                                    pumUnits:
+                                      type: string
+                                      example: Mililitro
+                                      description: ''
+                                    topSpecifications:
+                                      type: array
+                                      items:
+                                        type: object
+                                        required: []
+                                        properties:
+                                          name:
+                                            type: string
+                                            example: Compatibilidad
+                                            description: ''
+                                          value:
+                                            type: string
+                                            example: Windows/Chrome
+                                            description: ''
+                                      description: ''
+                                      example: >-
+                                        [object Object],[object Object],[object
+                                        Object],[object Object],[object Object]
+                                    specifications:
+                                      type: number
+                                      example: ''
+                                      description: ''
+                                  description: ''
+                                skuCollectionIds:
+                                  type: array
+                                  items:
+                                    type: string
+                          brandName:
+                            type: string
+                            example: Logitech
+                            description: ''
+                          currentVariant:
+                            type: number
+                            example: '3651417'
+                            description: ''
+                        description: ''
+                description: ''
           description: Default Response
   '/v1/config/{tenant}/{level}':
     get:
