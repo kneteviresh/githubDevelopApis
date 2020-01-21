@@ -1226,20 +1226,6 @@ paths:
       tags:
         - Product
       parameters:
-        - required: false
-          type: string
-          description: |-
-            Page number 
-             Example: 1, 2, 3
-          name: productId
-          in: query
-        - type: string
-          description: |-
-            Zone ID 
-             Example: 13, 14
-          required: false
-          name: zone
-          in: query
         - type: string
           description: |-
             Sort search results 
@@ -1254,6 +1240,20 @@ paths:
           required: false
           name: variantId
           in: query
+        - required: true
+          type: string
+          description: |-
+            Page number 
+             Example: 1, 2, 3
+          name: productId
+          in: path
+        - type: string
+          description: |-
+            Zone ID 
+             Example: 13, 14
+          name: zone
+          in: path
+          required: true
         - type: string
           description: |-
             Tenant Id 
