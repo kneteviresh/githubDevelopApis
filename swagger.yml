@@ -1269,7 +1269,7 @@ paths:
             properties:
               responseType:
                 type: string
-                example: OUT_OF_STOCK
+                example: ''
                 description: ''
               data:
                 type: object
@@ -1330,25 +1330,29 @@ paths:
                   breadCrumb:
                     type: array
                     items:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          id:
-                            type: string
-                            example: cat720161
-                          label:
-                            type: string
-                            example: Smartphones
-                          link:
-                            type: string
-                            example: /category/cat720161/Smartphones
-                          isCurrent:
-                            type: boolean
-                            example: false
-                          isRoot:
-                            type: boolean
-                            example: false
+                      type: object
+                      required: []
+                      properties:
+                        id:
+                          type: string
+                          example: cat1590002
+                          description: ''
+                        label:
+                          type: string
+                          example: Camisas
+                          description: ''
+                        link:
+                          type: string
+                          example: /category/cat1590002/Camisas
+                          description: ''
+                        isCurrent:
+                          type: boolean
+                          example: 'true'
+                          description: ''
+                        isRoot:
+                          type: boolean
+                          example: 'false'
+                          description: ''
                   attributes:
                     type: object
                     properties:
@@ -1374,8 +1378,17 @@ paths:
                         description: ''
                       sizeChart:
                         type: object
-                        properties: {}
-                        description: ''
+                        required: []
+                        properties:
+                          sizeChartName:
+                            type: string
+                            example: Ver Tabla de Tallas>>
+                            description: ''
+                          sizeChartUrl:
+                            type: string
+                            example: >-
+                              https://www.falabella.com/static/site/content/landing/moda/tallas/tallas-nuevo-zapatos-hombre-nike.html
+                            description: ''
                       sameImage:
                         type: boolean
                         example: false
@@ -1427,7 +1440,7 @@ paths:
                       required: []
                       properties:
                         id:
-                          type: number
+                          type: string
                           example: '4989166'
                           description: ''
                         name:
@@ -1486,7 +1499,7 @@ paths:
                             required: []
                             properties:
                               variantId:
-                                type: number
+                                type: string
                                 example: '4989166'
                                 description: ''
                               sellerId:
@@ -1494,7 +1507,7 @@ paths:
                                 example: FALABELLA
                                 description: ''
                               offeringId:
-                                type: number
+                                type: string
                                 example: '4989166'
                                 description: ''
                               stockGeoTypeKey:
@@ -1502,7 +1515,7 @@ paths:
                                 example: Zone
                                 description: ''
                               stockGeoTypeId:
-                                type: number
+                                type: string
                                 example: '13'
                                 description: ''
                               shippingOptionType:
@@ -1533,11 +1546,11 @@ paths:
                             required: []
                             properties:
                               label:
-                                type: number
+                                type: string
                                 example: ''
                                 description: ''
                               icons:
-                                type: number
+                                type: string
                                 example: ''
                                 description: ''
                               symbol:
@@ -1570,7 +1583,7 @@ paths:
                                 example: '2010-01-01T03:00:00Z'
                                 description: ''
                               offeringId:
-                                type: number
+                                type: string
                                 example: '4989166'
                                 description: ''
                               sellerProductStatus:
@@ -1590,19 +1603,51 @@ paths:
                               type: string
                               example: Rosado|DA8397
                               description: ''
-                            topSpecifications:
-                              type: number
-                              example: ''
-                              description: ''
                             specifications:
-                              type: number
-                              example: ''
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                    example: Temporada
+                                    description: ''
+                                  name:
+                                    type: string
+                                    example: Temporada
+                                    description: ''
+                                  value:
+                                    type: string
+                                    example: Toda temporada
+                                    description: ''
+                              description: ''
+                            topSpecifications:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  name:
+                                    type: string
+                                    example: Temporada
+                                    description: ''
+                                  value:
+                                    type: string
+                                    example: Toda temporada
+                                    description: ''
                               description: ''
                             sizeChart:
                               type: object
                               required: []
-                              properties: {}
-                              description: ''
+                              properties:
+                                sizeChartName:
+                                  type: string
+                                  example: Ver Tabla de Tallas>>
+                                  description: ''
+                                sizeChartUrl:
+                                  type: string
+                                  example: >-
+                                    https://www.falabella.com/static/site/content/landing/moda/tallas/tallas-nuevo-zapatos-hombre-nike.html
+                                  description: ''
                             colorName:
                               type: string
                               example: Rosado
@@ -1630,7 +1675,7 @@ paths:
                                 example: '$ '
                                 description: ''
                               type:
-                                type: number
+                                type: string
                                 example: '0'
                                 description: ''
                               price:
@@ -1646,13 +1691,19 @@ paths:
                             type: object
                             required: []
                             properties:
+                              icons:
+                                type: string
+                                example: cmr-icon
+                                description: ''
                               label:
                                 type: string
                                 example: ''
                                 description: ''
-                              icons:
-                                type: string
-                                example: cmr-icon
+                              price:
+                                type: array
+                                items:
+                                  type: string
+                                example: '19.990'
                                 description: ''
                               symbol:
                                 type: string
@@ -1661,10 +1712,6 @@ paths:
                               type:
                                 type: string
                                 example: cmrPrice
-                                description: ''
-                              price:
-                                type: string
-                                example: '40'
                                 description: ''
                           description: ''
                         deviceCmrPoints:
@@ -1680,15 +1727,19 @@ paths:
                     example: false
                     description: ''
                   mediaList:
-                    type: number
-                    example: ''
-                    description: ''
+                    type: array
+                    items:
+                      type: string
                   shareIcons:
                     type: array
                     items:
                       type: object
                       required: []
                       properties:
+                        body:
+                          type: string
+                          example: ''
+                          description: ''
                         name:
                           type: string
                           example: FACEBOOK
@@ -1701,11 +1752,17 @@ paths:
                           type: boolean
                           example: 'false'
                           description: ''
+                        url:
+                          type: string
+                          example: >-
+                            facehttps://staging.falabella.com/.co/falabella-co/product/2771779/Perfume-Dance-50-ml/{currentVariant}book
+                          description: ''
                         shareUrl:
                           type: string
                           example: >-
                             https://www.facebook.com/sharer.php?u=https://staging.falabella.com/falabella-cl/product/4989166/LED-40-KDL-40W655D-LA8-Full-HD-Smart-TV/{currentVariant}
                           description: ''
+                      additionalProperties: true
                     description: ''
                   internationalShipping:
                     type: object
@@ -1716,7 +1773,7 @@ paths:
                         example: false
                         description: ''
                       url:
-                        type: number
+                        type: string
                         example: ''
                         description: ''
                     description: ''
@@ -1743,7 +1800,7 @@ paths:
                               example: '7.5'
                               description: ''
                             UK:
-                              type: number
+                              type: string
                               example: '7'
                               description: ''
                             CM:
@@ -1853,12 +1910,12 @@ paths:
                     type: object
                     required: []
                     properties:
-                      '3651417':
+                      '4959036':
                         type: object
                         required: []
                         properties:
                           id:
-                            type: number
+                            type: string
                             example: '3651417'
                             description: ''
                           name:
@@ -1892,8 +1949,16 @@ paths:
                               sizeChart:
                                 type: object
                                 required: []
-                                properties: {}
-                                description: ''
+                                properties:
+                                  sizeChartName:
+                                    type: string
+                                    example: Ver Tabla de Tallas>>
+                                    description: ''
+                                  sizeChartUrl:
+                                    type: string
+                                    example: >-
+                                      https://www.falabella.com/static/site/content/landing/moda/tallas/tallas-nuevo-zapatos-hombre-nike.html
+                                    description: ''
                               sameImage:
                                 type: boolean
                                 example: false
@@ -1906,27 +1971,37 @@ paths:
                                 type: string
                                 example: Mililitro
                                 description: ''
+                              specifications:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: Temporada
+                                      description: ''
+                                    name:
+                                      type: string
+                                      example: Temporada
+                                      description: ''
+                                    value:
+                                      type: string
+                                      example: Toda temporada
+                                      description: ''
+                                description: ''
                               topSpecifications:
                                 type: array
                                 items:
                                   type: object
-                                  required: []
                                   properties:
                                     name:
                                       type: string
-                                      example: Compatibilidad
+                                      example: Temporada
                                       description: ''
                                     value:
                                       type: string
-                                      example: Windows/Chrome
+                                      example: Toda temporada
                                       description: ''
-                                description: ''
-                                example: >-
-                                  [object Object],[object Object],[object
-                                  Object],[object Object],[object Object]
-                              specifications:
-                                type: number
-                                example: ''
                                 description: ''
                             description: ''
                           variants:
@@ -1936,7 +2011,7 @@ paths:
                               required: []
                               properties:
                                 id:
-                                  type: number
+                                  type: string
                                   example: '4989166'
                                   description: ''
                                 name:
@@ -1961,8 +2036,32 @@ paths:
                                   example: '1733'
                                   description: ''
                                 badges:
-                                  type: number
-                                  example: ''
+                                  type: array
+                                  items:
+                                    type: object
+                                    required: []
+                                    properties:
+                                      position:
+                                        type: number
+                                        example: '2'
+                                        description: ''
+                                      label:
+                                        type: string
+                                        example: 40% DCTO
+                                        description: ''
+                                      styles:
+                                        type: object
+                                        required: []
+                                        properties:
+                                          backgroundColor:
+                                            type: string
+                                            example: '#e4022d'
+                                            description: ''
+                                          textColor:
+                                            type: string
+                                            example: '#ffffff'
+                                            description: ''
+                                        description: ''
                                   description: ''
                                 availability:
                                   type: array
@@ -1971,7 +2070,7 @@ paths:
                                     required: []
                                     properties:
                                       variantId:
-                                        type: number
+                                        type: string
                                         example: '4989166'
                                         description: ''
                                       sellerId:
@@ -1979,7 +2078,7 @@ paths:
                                         example: FALABELLA
                                         description: ''
                                       offeringId:
-                                        type: number
+                                        type: string
                                         example: '4989166'
                                         description: ''
                                       stockGeoTypeKey:
@@ -1987,7 +2086,7 @@ paths:
                                         example: Zone
                                         description: ''
                                       stockGeoTypeId:
-                                        type: number
+                                        type: string
                                         example: '13'
                                         description: ''
                                       shippingOptionType:
@@ -2018,11 +2117,11 @@ paths:
                                     required: []
                                     properties:
                                       label:
-                                        type: number
+                                        type: string
                                         example: ''
                                         description: ''
                                       icons:
-                                        type: number
+                                        type: string
                                         example: ''
                                         description: ''
                                       symbol:
@@ -2055,7 +2154,7 @@ paths:
                                         example: '2010-01-01T03:00:00Z'
                                         description: ''
                                       offeringId:
-                                        type: number
+                                        type: string
                                         example: '4989166'
                                         description: ''
                                       sellerProductStatus:
@@ -2067,64 +2166,70 @@ paths:
                                   type: object
                                   required: []
                                   properties:
-                                    isPrimeAvailable:
-                                      type: boolean
-                                      example: false
-                                      description: ''
-                                    viewTemplate:
+                                    size:
                                       type: string
-                                      example: NORMAL
+                                      example: xl
                                       description: ''
-                                    isPumAvailable:
-                                      type: boolean
-                                      example: false
-                                      description: ''
-                                    internetExclusiveIcon:
-                                      type: boolean
-                                      example: false
-                                      description: ''
-                                    newIconExpiryDate:
+                                    primaryColor:
                                       type: string
-                                      example: '2010-01-01T03:00:00Z'
+                                      example: Rosado|DA8397
                                       description: ''
-                                    sizeChart:
-                                      type: object
-                                      required: []
-                                      properties: {}
-                                      description: ''
-                                    sameImage:
-                                      type: boolean
-                                      example: false
-                                      description: ''
-                                    pumQuantity:
-                                      type: number
-                                      example: '10'
-                                      description: ''
-                                    pumUnits:
-                                      type: string
-                                      example: Mililitro
+                                    specifications:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          id:
+                                            type: string
+                                            example: Temporada
+                                            description: ''
+                                          name:
+                                            type: string
+                                            example: Temporada
+                                            description: ''
+                                          value:
+                                            type: string
+                                            example: Toda temporada
+                                            description: ''
                                       description: ''
                                     topSpecifications:
                                       type: array
                                       items:
                                         type: object
-                                        required: []
                                         properties:
                                           name:
                                             type: string
-                                            example: Compatibilidad
+                                            example: Temporada
                                             description: ''
                                           value:
                                             type: string
-                                            example: Windows/Chrome
+                                            example: Toda temporada
                                             description: ''
                                       description: ''
-                                      example: >-
-                                        [object Object],[object Object],[object
-                                        Object],[object Object],[object Object]
-                                    specifications:
+                                    sizeChart:
+                                      type: object
+                                      required: []
+                                      properties:
+                                        sizeChartName:
+                                          type: string
+                                          example: Ver Tabla de Tallas>>
+                                          description: ''
+                                        sizeChartUrl:
+                                          type: string
+                                          example: >-
+                                            https://www.falabella.com/static/site/content/landing/moda/tallas/tallas-nuevo-zapatos-hombre-nike.html
+                                          description: ''
+                                    colorName:
+                                      type: string
+                                      example: Rosado
+                                      description: ''
+                                    colorCode:
+                                      type: string
+                                      example: DA8397
+                                      description: ''
+                                    sizeOrder:
                                       type: number
-                                      example: ''
+                                      example: '3'
                                       description: ''
                                   description: ''
                                 skuCollectionIds:
@@ -2136,10 +2241,11 @@ paths:
                             example: Logitech
                             description: ''
                           currentVariant:
-                            type: number
+                            type: string
                             example: '3651417'
                             description: ''
                         description: ''
+                    additionalProperties: true
                 description: ''
           description: Default Response
   '/v1/config/{tenant}/{level}':
